@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TINDI BANDI</title>
+    <link rel="stylesheet" href="tea.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(./R\ \(1\).jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: brown;
+            border: 2px solid rgb(247, 223, 7);
+
+            margin: auto;
+            width: 40%;
+
+
+
+
+        }
+
+
+
+        h2 {
+            font-size: larger;
+            text-align: center;
+            color: rgb(247, 83, 7);
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: burlywood;
+            color: brown;
+            border-radius: 20%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="image-container">
+
+        <div class="overlay-text">
+            <h2>BILL COUNTER</h2>
+            <div class="container">
+                <label>
+                    <input type="radio" name="drink" value="tea"> Tea
+                </label>
+                <label>
+                    <input type="radio" name="drink" value="coffee"> Coffee
+                </label>
+                <label>
+                    <input type="radio" name="drink" value="horlics"> Horlics
+                </label>
+                <label>
+                    <input type="radio" name="drink" value="boost"> Boost
+                </label>
+                <br>
+                <button onclick="countDrink()">Add Drink</button>
+                <p>Tea Count: <span id="teaCount">0</span></p>
+                <p>Coffee Count: <span id="coffeeCount">0</span></p>
+                <p>Horlics Count: <span id="horlicsCount">0</span></p>
+                <p>Boost Count: <span id="boostCount">0</span></p>
+                <p>Total Price: <span id="totalPrice">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let teaCount = 0;
+        let coffeeCount = 0;
+        let horlicsCount = 0;
+        let boostCount = 0;
+
+        function countDrink() {
+            const selectedDrink = document.querySelector('input[name="drink"]:checked');
+            if (selectedDrink) {
+                const drinkType = selectedDrink.value;
+                if (drinkType === 'tea') {
+                    teaCount++;
+                    document.getElementById('teaCount').textContent = teaCount;
+                } else if (drinkType === 'coffee') {
+                    coffeeCount++;
+                    document.getElementById('coffeeCount').textContent = coffeeCount;
+                } else if (drinkType === 'horlics') {
+                    horlicsCount++;
+                    document.getElementById('horlicsCount').textContent = horlicsCount;
+                } else if (drinkType === 'boost') {
+                    boostCount++;
+                    document.getElementById('boostCount').textContent = boostCount;
+                }
+            }
+
+            let totalPrice = (teaCount * 10) + (coffeeCount * 12) + (horlicsCount * 15) + (boostCount * 20);
+            document.getElementById('totalPrice').textContent = totalPrice;
+        }
+    </script>
+
+    <script src="tea.js"></script>
+</body>
+
+</html>
